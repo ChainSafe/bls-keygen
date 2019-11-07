@@ -5,13 +5,13 @@
     "main": "lib/index.js",
     "scripts": {},
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/ChainSafe/bls-ts-key-mgmt.git"
+        "type": "git",
+        "url": "git+https://github.com/ChainSafe/bls-ts-key-mgmt.git"
     },
     "author": "ChainSafe Systems",
     "license": "Apache-2.0",
     "bugs": {
-      "url": "https://github.com/ChainSafe/bls-ts-key-mgmt/issues"
+        "url": "https://github.com/ChainSafe/bls-ts-key-mgmt/issues"
     },
     "homepage": "https://github.com/ChainSafe/bls-ts-key-mgmt#readme",
     "devDependencies": {
@@ -41,5 +41,9 @@
         "typedoc-plugin-markdown": "^2.0.6",
         "typescript": "^3.5.1",
         "webpack": "^4.39.1"
+    },
+    "dependencies": {
+        "bcrypto": "^4.2.6",
+        "buffer": "^5.4.3"
     }
 }
