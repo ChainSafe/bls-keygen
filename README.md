@@ -1,1 +1,1 @@
-# typescript-template
+# BLS TypeScript Key Managment
