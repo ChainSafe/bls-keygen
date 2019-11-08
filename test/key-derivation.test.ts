@@ -1,7 +1,8 @@
 import * as fs from "fs";
 import * as path from "path";
 import {expect} from "chai";
-import {deriveMasterSK} from "../src/key-derivation";
+import {deriveChildSK, deriveMasterSK} from "../src/key-derivation";
+import BN = require("bn.js");
 
 interface KdfTestVector {
     seed: string,
@@ -20,8 +21,22 @@ describe("key derivation", function () {
             it(`test vector #${index}`, function () {
                 const seed = Buffer.from(testVector.seed, "hex");
                 const expectedMasterSK = Buffer.from(testVector.master_SK.replace("0x", ""), "hex");
-                const masterSK = deriveMasterSK(seed).toBuffer('be', 32);
+                const masterSK = deriveMasterSK(seed);
                 expect(masterSK.toString("hex")).to.be.deep.equal(expectedMasterSK.toString("hex"));
+            })
+        })
+
+    });
+
+    describe("child key derivation", function () {
+
+        testVectors.forEach((testVector, index) => {
+            it(`test vector #${index}`, function () {
+                const parentSK = new BN(testVector.master_SK.replace("0x", ""), "hex");
+                const index = new BN(testVector.child_index.replace("0x", ""), 'hex', 'be');
+                const expectedChildSK = Buffer.from(testVector.child_SK.replace("0x", ""), "hex");
+                const childSK = deriveChildSK(parentSK, index);
+                expect(childSK.toString("hex")).to.be.deep.equal(expectedChildSK.toString("hex"));
             })
         })
 
