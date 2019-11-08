@@ -1,0 +1,28 @@
+{
+  "kdf_tests": [
+    {
+      "seed": "c55257c360c07c72029aebc1b53c05ed0362ada38ead3e3e9efa3708e53495531f09a6987599d18264c1e1c92f2cf141630c7a3c4ab7c81b2f001698e7463b04",
+      "master_SK": "0x1baa85baae3855480656e3e77b8e42c6f4be751a2d089e2caab293c39befaa41",
+      "child_index": "0x0",
+      "child_SK": "0x10675005371da254560dc0c5f9cdf87b305501233b3f69a5f413bea78a67c508"
+    },
+    {
+      "seed": "3141592653589793238462643383279502884197169399375105820974944592",
+      "master_SK": "0x65c3c038c95de45dbfd88f37fcb81f828abad41c09b6b1aa493716f2571378d4",
+      "child_index": "0x7a304959e8fb2025d1d5722d2e7d9012a3e5f6a2ed9411de09150",
+      "child_SK": "0x73bfe9e98a835d6555239dfbead859078419e84e459f1e5872d64f20540f7a4f"
+    },
+    {
+      "seed": "0099FF991111002299DD7744EE3355BBDD8844115566CC55663355668888CC00",
+      "master_SK": "0x6453b2abf548ac8837e7e48feee3957859b9cb982bf2c091d557bea2da398719",
+      "child_index": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "child_SK": "0x6a30f2e2c50b60c502cabbab8936e32c4cc780e37971a46d4e4c52123c59f46"
+    },
+    {
+      "seed": "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f",
+      "master_SK": "0x12fe8062db2fdf53ce87a5d3c8d9bc5c815bd14526dc8e85c0a2241b8e208d4e",
+      "child_index": "0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3",
+      "child_SK": "0x29fd615adf4565c811c30dfd6f4e54eba1ab09c453c2b4468a1f2ddc150bf70a"
+    }
+  ]
+}
