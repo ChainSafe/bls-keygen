@@ -44,7 +44,9 @@
         "webpack": "^4.39.1"
     },
     "dependencies": {
+        "assert": "^2.0.0",
         "bcrypto": "^4.2.6",
+        "bip39": "^3.0.2",
         "bn.js": "^5.0.0",
         "buffer": "^5.4.3",
         "secure-random": "^1.1.2"
