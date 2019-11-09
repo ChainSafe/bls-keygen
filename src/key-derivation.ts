@@ -2,6 +2,7 @@ import BN from "bn.js";
 import {getHkdf} from "./crypto";
 // @ts-ignore
 import {SHA256} from "bcrypto";
+import {Buffer} from "buffer";
 
 export function deriveMasterSK(ikm: Buffer): Buffer {
     const okm = getHkdf(ikm, 48, Buffer.from("BLS-SIG-KEYGEN-SALT-", "utf-8"));

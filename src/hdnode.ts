@@ -1,6 +1,6 @@
-import Buffer from "buffer";
+import {Buffer} from "buffer";
 import {assertValidPath} from "./utils";
-import BN = require("bn.js");
+import BN from "bn.js";
 import {deriveChildSK} from "./key-derivation";
 
 export class HDNode {

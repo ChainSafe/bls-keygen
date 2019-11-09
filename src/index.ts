@@ -4,6 +4,7 @@ import secureRandom from "secure-random";
 import {mnemonicToSeedSync, validateMnemonic} from "bip39";
 import assert from "assert";
 import {HDNode} from "./hdnode";
+import {Buffer} from "buffer";
 
 export function generateRandomBLSSecretKey(entropy?: Buffer): Buffer {
     let ikm = secureRandom(16, {type: "Buffer"});
