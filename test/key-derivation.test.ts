@@ -32,7 +32,7 @@ describe("key derivation", function () {
 
         testVectors.forEach((testVector, index) => {
             it(`test vector #${index}`, function () {
-                const parentSK = new BN(testVector.master_SK.replace("0x", ""), "hex");
+                const parentSK = Buffer.from(testVector.master_SK.replace("0x", ""), "hex");
                 const index = new BN(testVector.child_index.replace("0x", ""), 'hex', 'be');
                 const expectedChildSK = Buffer.from(testVector.child_SK.replace("0x", ""), "hex");
                 const childSK = deriveChildSK(parentSK, index);

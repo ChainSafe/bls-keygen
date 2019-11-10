@@ -19,9 +19,8 @@ export class HDNode {
         if(this.depth === 4) {
             return this;
         }
-        const parent = new BN(this.key, "hex");
         const index = this.getIndex(this.path, this.depth + 1);
-        return new HDNode(deriveChildSK(parent, index), this.depth + 1, this.path).derive();
+        return new HDNode(deriveChildSK(this.key, index), this.depth + 1, this.path).derive();
     }
 
     private getIndex(path: string, depth: number): BN {

@@ -11,14 +11,14 @@ export function deriveMasterSK(ikm: Buffer): Buffer {
     return okmBN.mod(r).toBuffer("be", 32);
 }
 
-export function deriveChildSK(parentSK: BN, index: BN): Buffer {
+export function deriveChildSK(parentSK: Buffer, index: BN): Buffer {
     const compressed_lamport_PK = parentSKToLamportPK(parentSK, index);
     return deriveMasterSK(compressed_lamport_PK)
 }
 
-function parentSKToLamportPK(parentSK: BN, index: BN): Buffer {
+function parentSKToLamportPK(parentSK: Buffer, index: BN): Buffer {
     const salt = index.toBuffer("be", 32);
-    const ikm = parentSK.toBuffer("be", 32);
+    const ikm = Buffer.from(parentSK);
     const lamport0 = ikmToLamportSK(ikm, salt);
     const notIkm = Buffer.from(ikm.map((value) => ~value));
     const lamport1 = ikmToLamportSK(notIkm, salt);
