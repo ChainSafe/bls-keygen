@@ -6,7 +6,11 @@ import assert from "assert";
 import {HDNode} from "./hdnode";
 import {Buffer} from "buffer";
 
-export function generateRandomBLSSecretKey(entropy?: Buffer): Buffer {
+/**
+ *
+ * @param entropy optional additional entropy
+ */
+export function generateRandomSecretKey(entropy?: Buffer): Buffer {
     let ikm = secureRandom(16, {type: "Buffer"});
     if(entropy) {
         ikm = Buffer.concat([entropy, ikm]);
@@ -14,7 +18,7 @@ export function generateRandomBLSSecretKey(entropy?: Buffer): Buffer {
     return deriveMasterSK(ikm);
 }
 
-export function fromMnemonicToBlsSecretKey(mnemonic: string, path = "m/12381/60/0/0"): Buffer {
+export function mnemonicToSecretKey(mnemonic: string, path = "m/12381/60/0/0"): Buffer {
     assert(validateMnemonic(mnemonic), "invalid mnemonic");
     const ikm = Buffer.from(mnemonicToSeedSync(mnemonic));
     const masterKey = deriveMasterSK(ikm);
