@@ -16,7 +16,7 @@ export function deriveChildSK(parentSK: Buffer, index: BN): Buffer {
 }
 
 function parentSKToLamportPK(parentSK: Buffer, index: BN): Buffer {
-    const salt = index.toBuffer("be", 32);
+    const salt = Buffer.from(index.toArray("be", 32));
     const ikm = Buffer.from(parentSK);
     const lamport0 = ikmToLamportSK(ikm, salt);
     const notIkm = Buffer.from(ikm.map((value) => ~value));
