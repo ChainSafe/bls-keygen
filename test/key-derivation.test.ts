@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import {expect} from "chai";
 import {deriveChildSK, deriveMasterSK} from "../src/key-derivation";
-import BN = require("bn.js");
+import BN from "bn.js";
 
 interface KdfTestVector {
     seed: string,

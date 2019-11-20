@@ -1,10 +1,10 @@
-import {deriveMasterSK} from "./key-derivation";
+import {deriveChildSK, deriveMasterSK} from "./key-derivation";
 // @ts-ignore
 import secureRandom from "secure-random";
 import {mnemonicToSeedSync, validateMnemonic} from "bip39";
 import assert from "assert";
-import {HDNode} from "./hdnode";
 import {Buffer} from "buffer";
+import {pathToIndices} from "./utils";
 
 /**
  *
@@ -18,12 +18,18 @@ export function generateRandomSecretKey(entropy?: Buffer): Buffer {
     return deriveMasterSK(ikm);
 }
 
-export function mnemonicToSecretKey(mnemonic: string, path = "m/12381/60/0/0"): Buffer {
+export function mnemonicToSecretKey(mnemonic: string, path: string | null = "m/12381/60/0/0"): Buffer {
     assert(validateMnemonic(mnemonic), "invalid mnemonic");
     const ikm = Buffer.from(mnemonicToSeedSync(mnemonic));
     const masterKey = deriveMasterSK(ikm);
+
     if(path) {
-        return HDNode.derivePath(masterKey, path);
+        return pathToIndices(path).reduce(
+            (parent, index) => {
+                return deriveChildSK(parent, index);
+            },
+            masterKey
+        )
     }
     return masterKey
 }
