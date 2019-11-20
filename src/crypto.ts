@@ -1,8 +1,8 @@
 import {Buffer} from "buffer";
-// @ts-ignore
-import {HKDF, SHA256} from "bcrypto";
+import SHA256 from "bcrypto/lib/sha256";
+import HKDF from "bcrypto/lib/hkdf";
 
-export function getHkdf(ikm: Buffer, length: number, salt: Buffer) {
+export function getHkdf(ikm: Buffer, length: number, salt: Buffer): Buffer {
     const bIKM = Buffer.from(ikm);
     const info = Buffer.alloc(0);
     const prk = HKDF.extract(SHA256, bIKM, salt);

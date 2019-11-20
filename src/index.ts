@@ -1,6 +1,5 @@
 import {deriveChildSK, deriveMasterSK} from "./key-derivation";
-// @ts-ignore
-import secureRandom from "secure-random";
+import {randomBytes} from "bcrypto/lib/random";
 import {mnemonicToSeedSync, validateMnemonic} from "bip39";
 import assert from "assert";
 import {Buffer} from "buffer";
@@ -11,7 +10,7 @@ import {pathToIndices} from "./utils";
  * @param entropy optional additional entropy
  */
 export function generateRandomSecretKey(entropy?: Buffer): Buffer {
-    let ikm = secureRandom(16, {type: "Buffer"});
+    let ikm = randomBytes(16);
     if(entropy) {
         ikm = Buffer.concat([entropy, ikm]);
     }
