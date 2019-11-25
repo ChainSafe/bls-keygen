@@ -7,6 +7,8 @@
     "scripts": {
         "test": "mocha -r ts-node/register test/**/*.test.ts ",
         "clean": "rm -rf lib",
+        "lint": "eslint --ext .ts src/",
+        "check-types": "tsc --noEmit",
         "prebuild": "yarn run clean",
         "build": "yarn run build:lib && yarn run build:types",
         "build:lib": "babel src -x .ts -d lib --source-maps",
@@ -36,7 +38,7 @@
         "@typescript-eslint/parser": "^1.3.0",
         "chai": "^4.2.0",
         "codecov": "^3.1.0",
-        "eslint": "^5.14.1",
+        "eslint": "5.16.0",
         "eslint-plugin-import": "^2.18.2",
         "mocha": "^6.1.4",
         "nyc": "^14.1.1",
