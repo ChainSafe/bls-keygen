@@ -1,8 +1,8 @@
 # BLS TypeScript Key Management
 
-![npm (tag)](https://img.shields.io/npm/v/bls-ts-key-mgmt/latest)
+![npm (tag)](https://img.shields.io/npm/v/bls-keygen/latest)
 [![Discord](https://img.shields.io/discord/593655374469660673.svg?label=Discord&logo=discord)](https://discord.gg/aMxzVcr)
-![GitHub](https://img.shields.io/github/license/chainsafe/bls-ts-key-mgmt)
+![GitHub](https://img.shields.io/github/license/chainsafe/bls-keygen)
 
 Utility methods for generating valid BLS keys from random bytes or mnemonic for NodeJs and Browser.
 
@@ -11,15 +11,25 @@ Implementation is following EIPS: [EIP-2334](https://github.com/ethereum/EIPs/pu
 ### How to use?
 ```typescript
 
+
+import {generateRandomSecretKey, mnemonicToSecretKey, deriveKey} from "bls-keygen";
+
 //random secret key
-import {generateRandomSecretKey, mnemonicToSecretKey} from "bls-ts-key-mgmt";
 const secretKey = generateRandomSecretKey();
 
 ...
 
-//secret key from mnemonic
+//secret key from mnemonic and path
 const secretKey = mnemonicToSecretKey(
     "impact exit example acquire drastic cement usage float mesh source private bulb twenty guitar neglect",
+    "m/12381/60/0/0"    
+);
+
+...
+
+//secret key from seed and path
+const secretKey = deriveKey(
+    seed,
     "m/12381/60/0/0"    
 );
 ```

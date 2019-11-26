@@ -14,24 +14,30 @@ export function generateRandomSecretKey(entropy?: Buffer): Buffer {
   if(entropy) {
     ikm = Buffer.concat([entropy, ikm]);
   }
-  return deriveMasterSK(ikm);
+  return deriveKey(ikm, null);
 }
 
 export function mnemonicToSecretKey(mnemonic: string, path: string | null = "m/12381/60/0/0"): Buffer {
   assert(validateMnemonic(mnemonic), "invalid mnemonic");
   const ikm = Buffer.from(mnemonicToSeedSync(mnemonic));
-  if(path) {
-    return deriveKey(ikm, path);
-  }
-  return deriveMasterSK(ikm);
+  return deriveKey(ikm, path);
 }
 
-export function deriveKey(seed: Buffer, path = "m/12381/60/0/0"): Buffer {
+/**
+ * Derive child key from seed and path.
+ * If path is omitted seed will be converted to valid secret key
+ * @param seed
+ * @param path
+ */
+export function deriveKey(seed: Buffer, path: string | null = "m/12381/60/0/0"): Buffer {
   const masterKey = deriveMasterSK(Buffer.from(seed));
-  return pathToIndices(path).reduce(
-    (parent, index) => {
-      return deriveChildSK(parent, index);
-    },
-    masterKey
-  );
+  if(path) {
+    return pathToIndices(path).reduce(
+      (parent, index) => {
+        return deriveChildSK(parent, index);
+      },
+      masterKey
+    );
+  }
+  return masterKey;
 }
