@@ -6,7 +6,7 @@
 
 Utility methods for generating valid BLS keys from random bytes or mnemonic for NodeJs and Browser.
 
-Implementation is following EIPS: [EIP-2334](https://github.com/ethereum/EIPs/pull/2334), [EIP-233](https://github.com/ethereum/EIPs/pull/2333)
+Implementation is following EIPS: [EIP-2334](https://github.com/ethereum/EIPs/pull/2334), [EIP-2333](https://github.com/ethereum/EIPs/pull/2333)
 
 ### How to use?
 ```typescript

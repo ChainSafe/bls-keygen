@@ -20,15 +20,18 @@ export function generateRandomSecretKey(entropy?: Buffer): Buffer {
 export function mnemonicToSecretKey(mnemonic: string, path: string | null = "m/12381/60/0/0"): Buffer {
   assert(validateMnemonic(mnemonic), "invalid mnemonic");
   const ikm = Buffer.from(mnemonicToSeedSync(mnemonic));
-  const masterKey = deriveMasterSK(ikm);
-
   if(path) {
-    return pathToIndices(path).reduce(
-      (parent, index) => {
-        return deriveChildSK(parent, index);
-      },
-      masterKey
-    );
+    return deriveKey(ikm, path);
   }
-  return masterKey;
+  return deriveMasterSK(ikm);
+}
+
+export function deriveKey(seed: Buffer, path = "m/12381/60/0/0"): Buffer {
+  const masterKey = deriveMasterSK(Buffer.from(seed));
+  return pathToIndices(path).reduce(
+    (parent, index) => {
+      return deriveChildSK(parent, index);
+    },
+    masterKey
+  );
 }
