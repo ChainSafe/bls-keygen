@@ -18,14 +18,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ChainSafe/bls-ts-key-mgmt.git"
+        "url": "git+https://github.com/ChainSafe/bls-keygen.git"
     },
     "author": "ChainSafe Systems",
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/ChainSafe/bls-ts-key-mgmt/issues"
+        "url": "https://github.com/ChainSafe/bls-keygen/issues"
     },
-    "homepage": "https://github.com/ChainSafe/bls-ts-key-mgmt#readme",
+    "homepage": "https://github.com/ChainSafe/bls-keygen#readme",
     "devDependencies": {
         "@babel/cli": "^7.2.3",
         "@babel/core": "^7.3.3",
