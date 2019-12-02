@@ -713,6 +713,16 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@chainsafe/bls-hd-key@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@chainsafe/bls-hd-key/-/bls-hd-key-0.0.1.tgz#143ff16d2dcc2ec7a0b51e211d6cadabdd65f2df"
+  integrity sha512-XuGNWhyeX/6lsWdZo0+dzCAsO7anilBb+384KUkH1LNeFjRxtve88wp+l3KiE7UBXBJg8tsgQyeR1weG5/gSaA==
+  dependencies:
+    assert "^2.0.0"
+    bcrypto "^4.2.6"
+    bn.js "^5.0.0"
+    buffer "^5.4.3"
+
 "@types/bn.js@^4.11.5":
   version "4.11.5"
   resolved "https://registry.yarnpkg.com/@types/bn.js/-/bn.js-4.11.5.tgz#40e36197433f78f807524ec623afcf0169ac81dc"

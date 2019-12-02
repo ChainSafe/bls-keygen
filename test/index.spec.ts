@@ -30,8 +30,8 @@ describe("private key from mnemonic", function () {
 
   it("should generate using given path", function () {
     const mnemonic = generateMnemonic();
-    const key = mnemonicToSecretKey(mnemonic, "m/12381/60/0/1");
-    const key1 = mnemonicToSecretKey(mnemonic, "m/12381/60/0/2");
+    const key = mnemonicToSecretKey(mnemonic, "m/12381/3600/0/1");
+    const key1 = mnemonicToSecretKey(mnemonic, "m/12381/3600/0/2");
     expect(key).to.not.be.null;
     expect(key.toString("hex")).to.not.be.equal(key1.toString("hex"));
   });
@@ -50,8 +50,8 @@ describe("private key from seed", function () {
 
   it("should generate using given path", function () {
     const seed = Buffer.alloc(32, 2);
-    const key = deriveKey(seed, "m/12381/60/0/1");
-    const key1 = deriveKey(seed, "m/12381/60/0/2");
+    const key = deriveKey(seed, "m/12381/3600/0/1");
+    const key1 = deriveKey(seed, "m/12381/3600/0/2");
     expect(key).to.not.be.null;
     expect(key.toString("hex")).to.not.be.equal(key1.toString("hex"));
   });
