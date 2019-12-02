@@ -1,5 +1,5 @@
 {
-    "name": "bls-ts-key-mgmt",
+    "name": "@chainsafe/bls-ts-key-mgmt",
     "version": "0.0.1",
     "description": "Typescript key management tool that works in the browser",
     "main": "lib/index.js",
