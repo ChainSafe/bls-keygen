@@ -2,7 +2,7 @@ import {randomBytes} from "bcrypto/lib/random";
 import {mnemonicToSeedSync, validateMnemonic} from "bip39";
 import assert from "assert";
 import {Buffer} from "buffer";
-import {deriveMasterSK, pathToIndices, deriveChildSK} from "@chainsafe/bls-hd-key"
+import {deriveMasterSK, pathToIndices, deriveChildSK} from "@chainsafe/bls-hd-key";
 
 /**
  *
