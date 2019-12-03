@@ -24,7 +24,7 @@ const secretKey = generateRandomSecretKey();
 //secret key from mnemonic and path
 const secretKey = mnemonicToSecretKey(
     "impact exit example acquire drastic cement usage float mesh source private bulb twenty guitar neglect",
-    "m/12381/60/0/0"    
+    "m/12381/3600/0/0"    
 );
 
 ...
@@ -32,7 +32,7 @@ const secretKey = mnemonicToSecretKey(
 //secret key from seed and path
 const secretKey = deriveKey(
     seed,
-    "m/12381/60/0/0"    
+    "m/12381/3600/0/0"    
 );
 ```
 
