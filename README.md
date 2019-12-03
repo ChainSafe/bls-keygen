@@ -8,11 +8,13 @@ Utility methods for generating valid BLS keys from random bytes or mnemonic for 
 
 Implementation is following EIPS: [EIP-2334](https://github.com/ethereum/EIPs/pull/2334), [EIP-2333](https://github.com/ethereum/EIPs/pull/2333)
 
+For low level methods of [EIP-2333](https://github.com/ethereum/EIPs/pull/2333), check out [@chainsafe/bls-hd-key](https://github.com/chainsafe/bls-hd-key).
+
 ### How to use?
 ```typescript
 
 
-import {generateRandomSecretKey, mnemonicToSecretKey, deriveKey} from "bls-keygen";
+import {generateRandomSecretKey, mnemonicToSecretKey, deriveKey} from "@chainsafe/bls-keygen";
 
 //random secret key
 const secretKey = generateRandomSecretKey();

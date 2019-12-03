@@ -2,7 +2,7 @@ import {randomBytes} from "bcrypto/lib/random";
 import {mnemonicToSeedSync, validateMnemonic} from "bip39";
 import assert from "assert";
 import {Buffer} from "buffer";
-import {deriveMasterSK, pathToIndices, deriveChildSK} from "@chainsafe/bls-hd-key";
+import {deriveMasterSK, pathToIndices, deriveChildSK, deriveChildSKMultiple} from "@chainsafe/bls-hd-key";
 
 /**
  *
@@ -31,12 +31,7 @@ export function mnemonicToSecretKey(mnemonic: string, path: string | null = "m/1
 export function deriveKey(seed: Buffer, path: string | null = "m/12381/3600/0/0"): Buffer {
   const masterKey = deriveMasterSK(Buffer.from(seed));
   if(path) {
-    return pathToIndices(path).reduce(
-      (parent, index) => {
-        return deriveChildSK(parent, index);
-      },
-      masterKey
-    );
+    return deriveChildSKMultiple(masterKey, pathToIndices(path));
   }
   return masterKey;
 }
