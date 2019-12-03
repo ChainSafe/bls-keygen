@@ -6,6 +6,7 @@ module.exports = {
     browser: true,
     es6: true,
     node: true,
+    mocha: true
   },
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -79,6 +80,6 @@ module.exports = {
         "import/no-extraneous-dependencies": "off",
         "@typescript-eslint/no-explicit-any": "off"
       }
-    }
+    },
   ]
 };
