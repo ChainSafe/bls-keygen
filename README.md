@@ -1,6 +1,6 @@
 # BLS TypeScript Key Management
 
-![npm (tag)](https://img.shields.io/npm/v/bls-keygen/latest)
+![npm (tag)](https://img.shields.io/npm/v/@chainsafe/bls-keygen/latest)
 [![Discord](https://img.shields.io/discord/593655374469660673.svg?label=Discord&logo=discord)](https://discord.gg/aMxzVcr)
 ![GitHub](https://img.shields.io/github/license/chainsafe/bls-keygen)
 
