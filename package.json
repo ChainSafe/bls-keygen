@@ -1,6 +1,6 @@
 {
     "name": "@chainsafe/bls-keygen",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Typescript key management tool that works in the browser",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
@@ -11,6 +11,7 @@
         "clean": "rm -rf lib",
         "lint": "eslint --ext .ts src/",
         "check-types": "tsc --noEmit",
+        "prepublishOnly": "yarn run build",
         "prebuild": "yarn run clean",
         "build": "yarn run build:lib && yarn run build:types",
         "build:lib": "babel src -x .ts -d lib --source-maps",
