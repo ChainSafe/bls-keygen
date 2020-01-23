@@ -1,6 +1,6 @@
 {
     "name": "@chainsafe/bls-keygen",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Typescript key management tool that works in the browser",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
