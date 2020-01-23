@@ -6,9 +6,9 @@
 
 Utility functions for generating BLS secret keys, built for NodeJs and Browser.
 
-Create a master key from BIP-39 mnemonic or entropy.
-Create a derived child key from BIP-39 mnemonic, entropy, or a master key.
-Create Eth2 validator keys from a master key.
+- Create a master key from BIP-39 mnemonic or entropy.
+- Create a derived child key from BIP-39 mnemonic, entropy, or a master key.
+- Create Eth2 validator keys from a master key.
 
 Implementation follows EIPS: [EIP-2334](https://github.com/ethereum/EIPs/pull/2334), [EIP-2333](https://github.com/ethereum/EIPs/pull/2333)
 
