@@ -17,18 +17,18 @@ export function generateRandomSecretKey(entropy?: Buffer): Buffer {
 }
 
 /**
- * Derive a key from a BIP39 mnemonic seed and optionally a path.
+ * Derive a secret key from a BIP39 mnemonic seed and optionally a path.
  * If path is included, the derived key will be the child secret key at that path,
  * otherwise, the derived key will be the master secret key
  */
-export function mnemonicToSecretKey(mnemonic: string, path?: string): Buffer {
+export function deriveKeyFromMnemonic(mnemonic: string, path?: string): Buffer {
   assert(validateMnemonic(mnemonic), "invalid mnemonic");
   const ikm = Buffer.from(mnemonicToSeedSync(mnemonic));
   return deriveKeyFromEntropy(ikm, path);
 }
 
 /**
- * Derive a key from entropy and optionally a path.
+ * Derive a secret key from entropy and optionally a path.
  * If path is included, the derived key will be the child secret key at that path,
  * otherwise, the derived key will be the master secret key
  */
@@ -41,7 +41,7 @@ export function deriveKeyFromEntropy(entropy: Buffer, path?: string): Buffer {
 }
 
 /**
- * Derive a child key from a master secret key
+ * Derive a child secret key from a master secret key
  * @param masterKey master secret key
  * @param path hd path to child
  */
@@ -55,7 +55,7 @@ export interface IEth2ValidatorKeys {
 }
 
 /**
- * Derive Eth2 validator keys from a single master key
+ * Derive Eth2 validator secret keys from a single master secret key
  * @param masterKey master secret key
  */
 export function deriveEth2ValidatorKeys(masterKey: Buffer, validatorIndex: number): IEth2ValidatorKeys {

@@ -1,4 +1,4 @@
-import {mnemonicToSecretKey, generateRandomSecretKey, deriveKeyFromEntropy} from "../src";
+import {deriveKeyFromMnemonic, generateRandomSecretKey, deriveKeyFromEntropy} from "../src";
 import {expect} from "chai";
 import {generateMnemonic} from "bip39";
 
@@ -22,16 +22,16 @@ describe("private key from mnemonic", function () {
 
   it("should generate master key", function () {
     const mnemonic = generateMnemonic();
-    const key = mnemonicToSecretKey(mnemonic);
-    const key1 = mnemonicToSecretKey(mnemonic);
+    const key = deriveKeyFromMnemonic(mnemonic);
+    const key1 = deriveKeyFromMnemonic(mnemonic);
     expect(key).to.not.be.null;
     expect(key.toString("hex")).to.be.equal(key1.toString("hex"));
   });
 
   it("should generate using given path", function () {
     const mnemonic = generateMnemonic();
-    const key = mnemonicToSecretKey(mnemonic, "m/12381/3600/0/1");
-    const key1 = mnemonicToSecretKey(mnemonic, "m/12381/3600/0/2");
+    const key = deriveKeyFromMnemonic(mnemonic, "m/12381/3600/0/1");
+    const key1 = deriveKeyFromMnemonic(mnemonic, "m/12381/3600/0/2");
     expect(key).to.not.be.null;
     expect(key.toString("hex")).to.not.be.equal(key1.toString("hex"));
   });
