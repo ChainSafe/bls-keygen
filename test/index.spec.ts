@@ -20,7 +20,7 @@ describe("random private key", function () {
 
 describe("private key from mnemonic", function () {
 
-  it("should generate using default path", function () {
+  it("should generate master key", function () {
     const mnemonic = generateMnemonic();
     const key = mnemonicToSecretKey(mnemonic);
     const key1 = mnemonicToSecretKey(mnemonic);
@@ -38,9 +38,9 @@ describe("private key from mnemonic", function () {
 
 });
 
-describe("private key from seed", function () {
+describe("private key from entropy", function () {
 
-  it("should generate using default path", function () {
+  it("should generate master key", function () {
     const seed = Buffer.alloc(32, 1);
     const key = deriveKeyFromEntropy(seed);
     const key1 = deriveKeyFromEntropy(seed);
@@ -48,7 +48,7 @@ describe("private key from seed", function () {
     expect(key.toString("hex")).to.be.equal(key1.toString("hex"));
   });
 
-  it("should generate using given path", function () {
+  it("should generate child key using given path", function () {
     const seed = Buffer.alloc(32, 2);
     const key = deriveKeyFromEntropy(seed, "m/12381/3600/0/1");
     const key1 = deriveKeyFromEntropy(seed, "m/12381/3600/0/2");
