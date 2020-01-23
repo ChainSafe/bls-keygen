@@ -13,20 +13,26 @@ export function generateRandomSecretKey(entropy?: Buffer): Buffer {
   if(entropy) {
     ikm = Buffer.concat([entropy, ikm]);
   }
-  return deriveKeyFromEntropy(ikm, null);
+  return deriveKeyFromEntropy(ikm);
 }
 
-export function mnemonicToSecretKey(mnemonic: string, path: string | null = "m/12381/3600/0/0"): Buffer {
+/**
+ * Derive a key from a BIP39 mnemonic seed and optionally a path.
+ * If path is included, the derived key will be the child secret key at that path,
+ * otherwise, the derived key will be the master secret key
+ */
+export function mnemonicToSecretKey(mnemonic: string, path?: string): Buffer {
   assert(validateMnemonic(mnemonic), "invalid mnemonic");
   const ikm = Buffer.from(mnemonicToSeedSync(mnemonic));
   return deriveKeyFromEntropy(ikm, path);
 }
 
 /**
- * Derive child key from seed and path.
- * If path is omitted seed will be converted to valid secret key
+ * Derive a key from entropy and optionally a path.
+ * If path is included, the derived key will be the child secret key at that path,
+ * otherwise, the derived key will be the master secret key
  */
-export function deriveKeyFromEntropy(entropy: Buffer, path: string | null = "m/12381/3600/0/0"): Buffer {
+export function deriveKeyFromEntropy(entropy: Buffer, path?: string): Buffer {
   const masterKey = deriveMasterSK(Buffer.from(entropy));
   if(path) {
     return deriveKeyFromMaster(masterKey, path);
