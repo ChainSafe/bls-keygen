@@ -1,4 +1,4 @@
-# BLS Key Generation
+# BLS Keygen
 
 ![npm (tag)](https://img.shields.io/npm/v/@chainsafe/bls-keygen/latest)
 [![Discord](https://img.shields.io/discord/593655374469660673.svg?label=Discord&logo=discord)](https://discord.gg/aMxzVcr)
