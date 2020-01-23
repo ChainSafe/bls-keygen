@@ -17,7 +17,7 @@ export function generateRandomSecretKey(entropy?: Buffer): Buffer {
 }
 
 /**
- * Derive a secret key from a BIP39 mnemonic seed and optionally a path.
+ * Derive a secret key from a BIP39 mnemonic seed and optionally an EIP-2334 path.
  * If path is included, the derived key will be the child secret key at that path,
  * otherwise, the derived key will be the master secret key
  */
@@ -28,7 +28,7 @@ export function deriveKeyFromMnemonic(mnemonic: string, path?: string): Buffer {
 }
 
 /**
- * Derive a secret key from entropy and optionally a path.
+ * Derive a secret key from entropy and optionally an EIP-2334 path.
  * If path is included, the derived key will be the child secret key at that path,
  * otherwise, the derived key will be the master secret key
  */
@@ -43,7 +43,7 @@ export function deriveKeyFromEntropy(entropy: Buffer, path?: string): Buffer {
 /**
  * Derive a child secret key from a master secret key
  * @param masterKey master secret key
- * @param path hd path to child
+ * @param path EIP-2334 path to child
  */
 export function deriveKeyFromMaster(masterKey: Buffer, path: string): Buffer {
   return deriveChildSKMultiple(masterKey, pathToIndices(path));
