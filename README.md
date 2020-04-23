@@ -81,6 +81,10 @@ Requirements:
     yarn run test
 ```
 
+### Audit
+
+This repo was audited by Least Authority as part of [this security audit](https://github.com/ChainSafe/lodestar/blob/master/audits/2020-03-23_UTILITY_LIBRARIES.pdf), released 2020-03-23. Commit [`32b068`](https://github.com/ChainSafe/bls-hd-key/commit/32b068) verified in the report.
+
 ### License
 
 Apache-2.0
