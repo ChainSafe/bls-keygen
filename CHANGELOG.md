@@ -1,3 +1,9 @@
+## 0.2.0 (2020-07-30)
+
+### BREAKING CHANGES
+
+* update bls-hd-key ([f9f561](https://github.com/chainsafe/bls-keygen/commit/f9f561))
+
 ## 0.1.0 (2020-01-24) 
 
 ### BREAKING CHANGES
