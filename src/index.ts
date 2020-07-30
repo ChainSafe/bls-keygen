@@ -9,7 +9,7 @@ import {deriveChildSKMultiple, deriveMasterSK, pathToIndices} from "@chainsafe/b
  * @param entropy optional additional entropy
  */
 export function generateRandomSecretKey(entropy?: Buffer): Buffer {
-  let ikm = randomBytes(16);
+  let ikm = randomBytes(32);
   if(entropy) {
     ikm = Buffer.concat([entropy, ikm]);
   }
