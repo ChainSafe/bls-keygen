@@ -55,12 +55,26 @@ export interface IEth2ValidatorKeys {
 }
 
 /**
+ * Return Eth2 validator HD paths
+ */
+export function eth2ValidatorPaths(validatorIndex: number): {
+  withdrawal: string;
+  signing: string;
+} {
+  return {
+    withdrawal: `m/12381/3600/${validatorIndex}/0`,
+    signing: `m/12381/3600/${validatorIndex}/0/0`,
+  };
+}
+
+/**
  * Derive Eth2 validator secret keys from a single master secret key
  * @param masterKey master secret key
  */
 export function deriveEth2ValidatorKeys(masterKey: Buffer, validatorIndex: number): IEth2ValidatorKeys {
+  const paths = eth2ValidatorPaths(validatorIndex);
   return {
-    withdrawal: deriveKeyFromMaster(masterKey, `m/12381/3600/${validatorIndex}/0`),
-    signing: deriveKeyFromMaster(masterKey, `m/12381/3600/${validatorIndex}/0/0`),
+    withdrawal: deriveKeyFromMaster(masterKey, paths.withdrawal),
+    signing: deriveKeyFromMaster(masterKey, paths.signing),
   };
 }
