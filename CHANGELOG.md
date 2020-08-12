@@ -1,3 +1,9 @@
+## 0.2.1 (2020-08-11)
+
+### Features
+
+* Add `eth2ValidatorPaths` ([482bc6](https://github.com/chainsafe/bls-keygen/commit/482bc6))
+
 ## 0.2.0 (2020-07-30)
 
 ### BREAKING CHANGES
