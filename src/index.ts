@@ -1,7 +1,6 @@
-import {randomBytes} from "bcrypto/lib/random";
 import {mnemonicToSeedSync, validateMnemonic} from "bip39";
-import assert from "assert";
 import {Buffer} from "buffer";
+import randomBytes from "randombytes";
 import {deriveChildSKMultiple, deriveMasterSK, pathToIndices} from "@chainsafe/bls-hd-key";
 
 /**
@@ -22,7 +21,9 @@ export function generateRandomSecretKey(entropy?: Buffer): Buffer {
  * otherwise, the derived key will be the master secret key
  */
 export function deriveKeyFromMnemonic(mnemonic: string, path?: string): Buffer {
-  assert(validateMnemonic(mnemonic), "invalid mnemonic");
+  if(!validateMnemonic(mnemonic)) {
+    throw new Error("invalid mnemonic");
+  }
   const ikm = Buffer.from(mnemonicToSeedSync(mnemonic));
   return deriveKeyFromEntropy(ikm, path);
 }
