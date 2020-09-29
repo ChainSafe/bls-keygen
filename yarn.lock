@@ -879,10 +879,10 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@chainsafe/bls-hd-key@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@chainsafe/bls-hd-key/-/bls-hd-key-0.1.0.tgz#5e51de16801f4b4b421e418f0d1ef0692df0c585"
-  integrity sha512-VZj+Ml4YTPz+d/K2n9q/9bLlIJnTr/xdAC5w1eCvIFtcQrZCY1Zw+bCcXKX1q6sbZpO9xhyuoepJzJX9VkMPqw==
+"@chainsafe/bls-hd-key@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@chainsafe/bls-hd-key/-/bls-hd-key-0.2.0.tgz#90aaf030150de64099e1fb27582b27bbe5ce5309"
+  integrity sha512-ps10jd99UWcm1qPo4spD/6hxFor9fsDgB0s2wJuFKqPdM2R+4LCowhv5kdGgGs3VIN1H8l+CgO08yC7X0WlBDQ==
   dependencies:
     assert "^2.0.0"
     bcrypto "^5.0.4"

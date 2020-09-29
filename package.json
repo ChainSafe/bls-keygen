@@ -57,7 +57,7 @@
         "webpack": "^4.41.2"
     },
     "dependencies": {
-        "@chainsafe/bls-hd-key": "^0.1.0",
+        "@chainsafe/bls-hd-key": "^0.2.0",
         "bip39": "^3.0.2",
         "buffer": "^5.4.3",
         "randombytes": "^2.1.0"
