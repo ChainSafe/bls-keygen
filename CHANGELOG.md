@@ -1,3 +1,9 @@
+## 0.3.0 (2020-11-06)
+
+### BREAKING CHANGES
+
+* update bls-hd-key ([0febb0](https://github.com/chainsafe/bls-keygen/commit/0febb0))
+
 ## 0.2.1 (2020-08-11)
 
 ### Features
