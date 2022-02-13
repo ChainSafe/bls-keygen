@@ -1,16 +1,15 @@
 import {mnemonicToSeedSync, validateMnemonic} from "bip39";
-import {Buffer} from "buffer";
-import randomBytes from "randombytes";
+import {concatBytes, randomBytes} from "@noble/hashes/utils";
 import {deriveChildSKMultiple, deriveMasterSK, pathToIndices} from "@chainsafe/bls-hd-key";
 
 /**
  *
  * @param entropy optional additional entropy
  */
-export function generateRandomSecretKey(entropy?: Buffer): Buffer {
+export function generateRandomSecretKey(entropy?: Uint8Array): Uint8Array {
   let ikm = randomBytes(32);
   if(entropy) {
-    ikm = Buffer.concat([entropy, ikm]);
+    ikm = concatBytes(entropy, ikm);
   }
   return deriveKeyFromEntropy(ikm);
 }
@@ -20,11 +19,11 @@ export function generateRandomSecretKey(entropy?: Buffer): Buffer {
  * If path is included, the derived key will be the child secret key at that path,
  * otherwise, the derived key will be the master secret key
  */
-export function deriveKeyFromMnemonic(mnemonic: string, path?: string): Buffer {
+export function deriveKeyFromMnemonic(mnemonic: string, path?: string): Uint8Array {
   if(!validateMnemonic(mnemonic)) {
     throw new Error("invalid mnemonic");
   }
-  const ikm = Buffer.from(mnemonicToSeedSync(mnemonic));
+  const ikm = Uint8Array.from(mnemonicToSeedSync(mnemonic));
   return deriveKeyFromEntropy(ikm, path);
 }
 
@@ -33,8 +32,8 @@ export function deriveKeyFromMnemonic(mnemonic: string, path?: string): Buffer {
  * If path is included, the derived key will be the child secret key at that path,
  * otherwise, the derived key will be the master secret key
  */
-export function deriveKeyFromEntropy(entropy: Buffer, path?: string): Buffer {
-  const masterKey = deriveMasterSK(Buffer.from(entropy));
+export function deriveKeyFromEntropy(entropy: Uint8Array, path?: string): Uint8Array {
+  const masterKey = deriveMasterSK(Uint8Array.from(entropy));
   if(path) {
     return deriveKeyFromMaster(masterKey, path);
   }
@@ -46,13 +45,13 @@ export function deriveKeyFromEntropy(entropy: Buffer, path?: string): Buffer {
  * @param masterKey master secret key
  * @param path EIP-2334 path to child
  */
-export function deriveKeyFromMaster(masterKey: Buffer, path: string): Buffer {
+export function deriveKeyFromMaster(masterKey: Uint8Array, path: string): Uint8Array {
   return deriveChildSKMultiple(masterKey, pathToIndices(path));
 }
 
 export interface IEth2ValidatorKeys {
-  withdrawal: Buffer;
-  signing: Buffer;
+  withdrawal: Uint8Array;
+  signing: Uint8Array;
 }
 
 /**
@@ -72,7 +71,7 @@ export function eth2ValidatorPaths(validatorIndex: number): {
  * Derive Eth2 validator secret keys from a single master secret key
  * @param masterKey master secret key
  */
-export function deriveEth2ValidatorKeys(masterKey: Buffer, validatorIndex: number): IEth2ValidatorKeys {
+export function deriveEth2ValidatorKeys(masterKey: Uint8Array, validatorIndex: number): IEth2ValidatorKeys {
   const paths = eth2ValidatorPaths(validatorIndex);
   return {
     withdrawal: deriveKeyFromMaster(masterKey, paths.withdrawal),
