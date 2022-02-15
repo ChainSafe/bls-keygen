@@ -13,9 +13,7 @@
         "check-types": "tsc --noEmit",
         "prepublishOnly": "yarn run build",
         "prebuild": "yarn run clean",
-        "build": "yarn run build:lib && yarn run build:types",
-        "build:lib": "babel src -x .ts -d lib --source-maps",
-        "build:types": "tsc --emitDeclarationOnly --declaration --outDir lib -p tsconfig.build.json"
+        "build": "tsc -p tsconfig.build.json --outDir lib"
     },
     "repository": {
         "type": "git",
@@ -28,11 +26,6 @@
     },
     "homepage": "https://github.com/ChainSafe/bls-keygen#readme",
     "devDependencies": {
-        "@babel/cli": "^7.2.3",
-        "@babel/core": "^7.3.3",
-        "@babel/preset-env": "^7.3.1",
-        "@babel/preset-typescript": "^7.3.3",
-        "@babel/register": "^7.0.0",
         "@types/bn.js": "^4.11.5",
         "@types/chai": "^4.1.7",
         "@types/mocha": "^5.2.5",
