@@ -1,4 +1,5 @@
-import {mnemonicToSeedSync, validateMnemonic} from "bip39";
+import {mnemonicToSeedSync, validateMnemonic} from "@scure/bip39";
+import {wordlist} from "@scure/bip39/wordlists/english";
 import {concatBytes, randomBytes} from "@noble/hashes/utils";
 import {deriveChildSKMultiple, deriveMasterSK, pathToIndices} from "@chainsafe/bls-hd-key";
 
@@ -20,7 +21,7 @@ export function generateRandomSecretKey(entropy?: Uint8Array): Uint8Array {
  * otherwise, the derived key will be the master secret key
  */
 export function deriveKeyFromMnemonic(mnemonic: string, path?: string): Uint8Array {
-  if(!validateMnemonic(mnemonic)) {
+  if(!validateMnemonic(mnemonic, wordlist)) {
     throw new Error("invalid mnemonic");
   }
   const ikm = Uint8Array.from(mnemonicToSeedSync(mnemonic));

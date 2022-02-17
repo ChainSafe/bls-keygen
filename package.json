@@ -52,6 +52,6 @@
     "dependencies": {
         "@chainsafe/bls-hd-key": "^0.3.0",
         "@noble/hashes": "^1.0.0",
-        "bip39": "^3.0.4"
+        "@scure/bip39": "^1.0.0"
     }
 }
