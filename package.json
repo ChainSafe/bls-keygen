@@ -21,6 +21,13 @@
     },
     "author": "ChainSafe Systems",
     "license": "Apache-2.0",
+    "keywords": [
+        "ethereum",
+        "eth2",
+        "bls",
+        "eip-2333",
+        "eip-2334"
+    ],
     "bugs": {
         "url": "https://github.com/ChainSafe/bls-keygen/issues"
     },
