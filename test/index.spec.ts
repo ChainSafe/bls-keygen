@@ -1,6 +1,7 @@
 import {deriveKeyFromMnemonic, generateRandomSecretKey, deriveKeyFromEntropy} from "../src";
+import {generateMnemonic} from "@scure/bip39";
+import {wordlist} from "@scure/bip39/wordlists/english";
 import {expect} from "chai";
-import {generateMnemonic} from "bip39";
 
 describe("random private key", function () {
 
@@ -21,7 +22,7 @@ describe("random private key", function () {
 describe("private key from mnemonic", function () {
 
   it("should generate master key", function () {
-    const mnemonic = generateMnemonic();
+    const mnemonic = generateMnemonic(wordlist);
     const key = deriveKeyFromMnemonic(mnemonic);
     const key1 = deriveKeyFromMnemonic(mnemonic);
     expect(key).to.not.be.null;
@@ -29,7 +30,7 @@ describe("private key from mnemonic", function () {
   });
 
   it("should generate using given path", function () {
-    const mnemonic = generateMnemonic();
+    const mnemonic = generateMnemonic(wordlist);
     const key = deriveKeyFromMnemonic(mnemonic, "m/12381/3600/0/1");
     const key1 = deriveKeyFromMnemonic(mnemonic, "m/12381/3600/0/2");
     expect(key).to.not.be.null;
