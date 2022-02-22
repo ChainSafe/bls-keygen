@@ -1,3 +1,9 @@
+## 0.4.0 (2022-02-22)
+
+### BREAKING CHANGES
+
+* Update dependencies - Replace `Buffer` with `Uint8Array` in public APIs [#30](https://github.com/ChainSafe/bls-keygen/pull/30)
+
 ## 0.3.0 (2020-11-06)
 
 ### BREAKING CHANGES
