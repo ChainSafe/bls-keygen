@@ -1,7 +1,7 @@
 import {mnemonicToSeedSync, validateMnemonic} from "@scure/bip39";
 import {wordlist} from "@scure/bip39/wordlists/english";
 import {concatBytes, randomBytes} from "@noble/hashes/utils";
-import {deriveChildSKMultiple, deriveMasterSK, pathToIndices} from "@chainsafe/bls-hd-key";
+import {deriveChildSKMultiple, deriveMasterSK, pathToIndices, deriveChildSK} from "@chainsafe/bls-hd-key";
 
 /**
  *
@@ -64,6 +64,8 @@ export function eth2ValidatorPaths(validatorIndex: number): {
 } {
   return {
     withdrawal: `m/12381/3600/${validatorIndex}/0`,
+    // If this path is ever updated so that the last index is not 0, then must also update
+    // the signing derivation path below in deriveEth2ValidatorKeys
     signing: `m/12381/3600/${validatorIndex}/0/0`,
   };
 }
@@ -74,8 +76,11 @@ export function eth2ValidatorPaths(validatorIndex: number): {
  */
 export function deriveEth2ValidatorKeys(masterKey: Uint8Array, validatorIndex: number): IEth2ValidatorKeys {
   const paths = eth2ValidatorPaths(validatorIndex);
+  const withdrawal = deriveKeyFromMaster(masterKey, paths.withdrawal);
   return {
-    withdrawal: deriveKeyFromMaster(masterKey, paths.withdrawal),
-    signing: deriveKeyFromMaster(masterKey, paths.signing),
+    withdrawal,
+    // This assumes that the signing path always complies with EIP2334. Index should match last segment of path
+    // returned from eth2ValidatorPaths
+    signing: deriveChildSK(withdrawal, 0),
   };
 }
